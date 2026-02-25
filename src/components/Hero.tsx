@@ -1,6 +1,11 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, CheckCircle2 } from 'lucide-react'
 
+const scrollToCalendly = (e: React.MouseEvent) => {
+    e.preventDefault()
+    document.getElementById('diagnostico')?.scrollIntoView({ behavior: 'smooth' })
+}
+
 export const Hero = () => {
     return (
         <section className="relative pt-32 pb-20 px-6 md:px-12 overflow-hidden">
@@ -13,40 +18,54 @@ export const Hero = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                 >
-                    <h1 className="text-5xl md:text-7xl font-bold leading-[1.1] mb-6">
-                        Dejá de ser la secretaria de tu <span className="text-accent">propio negocio.</span>
+                    {/* Trust badge */}
+                    <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-white/60 px-4 py-2 rounded-full text-xs font-medium mb-6">
+                        <span className="w-1.5 h-1.5 bg-terminal rounded-full animate-pulse" />
+                        Trabajo 1 a 1 · Sin plantillas genéricas
+                    </div>
+
+                    <h1 className="text-5xl md:text-6xl font-bold leading-[1.1] mb-6 max-w-[640px]">
+                        Dejá de ser la secretaria de tu{' '}
+                        <span className="text-accent">propio negocio.</span>
                     </h1>
-                    <p className="text-xl text-white/70 mb-8 max-w-lg">
-                        En Lambda Works construimos sistemas de turnos y gestión para PyMEs de servicios que hoy viven entre WhatsApp, Excel y caos.
+
+                    <p className="text-lg text-white/60 mb-8 max-w-[540px] leading-relaxed">
+                        Armamos el sistema que ordena tus turnos, clientes y comunicación.
+                        Para que el negocio funcione <strong className="text-white/80">sin depender de vos.</strong>
                     </p>
 
-                    <ul className="space-y-4 mb-10">
+                    <ul className="space-y-3 mb-10 max-w-[480px]">
                         {[
-                            "Turnos online + recordatorios automáticos",
-                            "Clientes y pagos ordenados en un solo lugar",
-                            "Menos tareas manuales, más tiempo para crecer"
+                            'Menos cancelaciones. Menos mensajes perdidos.',
+                            'Más control diario. Menos dependencia de vos.',
+                            'Tu operación ordenada en un solo lugar.',
                         ].map((bullet, i) => (
                             <li key={i} className="flex items-center gap-3 text-white/80">
-                                <CheckCircle2 className="w-5 h-5 text-accent" />
+                                <CheckCircle2 className="w-5 h-5 text-accent shrink-0" />
                                 <span>{bullet}</span>
                             </li>
                         ))}
                     </ul>
 
-                    <div className="flex flex-col sm:flex-row gap-6 items-center">
+                    <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
                         <a
                             href="#diagnostico"
-                            className="w-full sm:w-auto px-8 py-4 bg-accent hover:bg-accent/90 rounded-full font-semibold transition-all flex items-center justify-center gap-2 group"
+                            onClick={scrollToCalendly}
+                            className="w-full sm:w-auto px-8 py-4 bg-accent hover:bg-accent/90 rounded-full font-semibold transition-all flex items-center justify-center gap-2 group min-h-[44px]"
                         >
-                            Agendar diagnóstico
+                            Agendar diagnóstico gratuito
                             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </a>
-                        <a href="#solucion" className="text-white/60 hover:text-white transition-colors border-b border-transparent hover:border-white/20">
-                            Ver si esto aplica a mi negocio
+                        <a
+                            href="#solucion"
+                            className="text-white/50 hover:text-white transition-colors text-sm border-b border-transparent hover:border-white/20 pb-0.5 min-h-[44px] flex items-center"
+                        >
+                            Ver si aplica a mi caso →
                         </a>
                     </div>
-                    <p className="mt-6 text-sm text-white/40 italic">
-                        Llamada de 30 minutos. Sin presión. Solo diagnóstico y un plan claro.
+
+                    <p className="mt-5 text-xs text-white/30 italic">
+                        30 min · Sin presión · Si no aplica, te lo decimos.
                     </p>
                 </motion.div>
 

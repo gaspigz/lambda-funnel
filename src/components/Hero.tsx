@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, CheckCircle2 } from 'lucide-react'
+import { trackStandardEvent } from '../utils/pixel'
 
 const scrollToCalendly = (e: React.MouseEvent) => {
     e.preventDefault()
+    trackStandardEvent('InitiateCheckout', { content_name: 'Hero CTA' })
     document.getElementById('diagnostico')?.scrollIntoView({ behavior: 'smooth' })
 }
 

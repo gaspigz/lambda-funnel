@@ -1,9 +1,18 @@
 import { SuccessVideo } from '../components/SuccessVideo'
-import { motion } from 'framer-motion'
+import { useEffect } from 'react'
 import { ArrowLeft } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
+import { trackStandardEvent } from '../utils/pixel'
+
 export const SuccessPage = () => {
+    useEffect(() => {
+        trackStandardEvent('Lead', {
+            content_name: 'Reserva Exitosa',
+            content_category: 'Agendamiento'
+        })
+    }, [])
+
     return (
         <div className="min-h-screen bg-background selection:bg-accent/30">
             <nav className="fixed top-0 w-full z-40 py-5 px-10 flex justify-between items-center backdrop-blur-sm">

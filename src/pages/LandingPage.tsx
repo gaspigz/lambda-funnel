@@ -9,6 +9,9 @@ import { Transformation } from '../components/Transformation'
 import { ArrowRight } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 
+import { useEffect } from 'react'
+import { trackStandardEvent } from '../utils/pixel'
+
 const scrollToCalendly = (e: React.MouseEvent) => {
     e.preventDefault()
     document.getElementById('diagnostico')?.scrollIntoView({ behavior: 'smooth' })
@@ -16,6 +19,13 @@ const scrollToCalendly = (e: React.MouseEvent) => {
 
 export const LandingPage = () => {
     const navigate = useNavigate()
+
+    useEffect(() => {
+        trackStandardEvent('ViewContent', {
+            content_name: 'Landing Page',
+            content_category: 'Service'
+        })
+    }, [])
 
     const handleBookingSuccess = () => {
         console.log("Sending booking confirmation details via email...")
@@ -50,7 +60,10 @@ export const LandingPage = () => {
                 <div className="py-12 px-6 md:px-12 text-center bg-[#0a1120]">
                     <a
                         href="#diagnostico"
-                        onClick={scrollToCalendly}
+                        onClick={(e) => {
+                            scrollToCalendly(e)
+                            trackStandardEvent('InitiateCheckout', { content_name: 'Mid-Page CTA' })
+                        }}
                         className="inline-flex items-center gap-2 px-8 py-4 bg-accent hover:bg-accent/90 rounded-full font-semibold transition-all group min-h-[44px]"
                     >
                         Agendar diagnóstico gratuito
@@ -92,7 +105,10 @@ export const LandingPage = () => {
                     <p className="text-white/30 text-sm mb-4">¿Todavía dudando?</p>
                     <a
                         href="#diagnostico"
-                        onClick={scrollToCalendly}
+                        onClick={(e) => {
+                            scrollToCalendly(e)
+                            trackStandardEvent('InitiateCheckout', { content_name: 'Final CTA' })
+                        }}
                         className="inline-flex items-center gap-2 px-8 py-4 border border-accent/30 hover:bg-accent hover:border-accent rounded-full font-semibold text-accent hover:text-white transition-all group min-h-[44px]"
                     >
                         Ver si aplica a mi caso

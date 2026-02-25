@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, Calendar } from 'lucide-react'
+import { trackStandardEvent } from '../utils/pixel'
 
 export const StickyCTA = () => {
     const [showDesktop, setShowDesktop] = useState(false)
@@ -23,6 +24,7 @@ export const StickyCTA = () => {
                     className="flex flex-col items-center justify-center w-full bg-accent hover:bg-accent/90 text-white font-semibold rounded-2xl py-3 transition-all active:scale-95"
                     onClick={(e) => {
                         e.preventDefault()
+                        trackStandardEvent('InitiateCheckout', { content_name: 'Sticky Mobile CTA' })
                         document.getElementById('diagnostico')?.scrollIntoView({ behavior: 'smooth' })
                     }}
                 >
@@ -50,6 +52,7 @@ export const StickyCTA = () => {
                             className="flex items-center gap-2 px-6 py-3 bg-accent hover:bg-accent/90 rounded-full font-semibold text-sm transition-all group min-h-[44px]"
                             onClick={(e) => {
                                 e.preventDefault()
+                                trackStandardEvent('InitiateCheckout', { content_name: 'Sticky Desktop CTA' })
                                 document.getElementById('diagnostico')?.scrollIntoView({ behavior: 'smooth' })
                             }}
                         >

@@ -37,13 +37,6 @@ export const SuccessVideo = () => {
 
                 {/* Video thumbnail */}
                 <div className="aspect-video w-full bg-black rounded-3xl border border-white/10 overflow-hidden relative shadow-2xl mb-12 group cursor-pointer">
-                    {/* Thumbnail overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-background/80 to-background/95 z-10 flex flex-col items-center justify-center gap-4 group-hover:from-accent/15 transition-all">
-                        <div className="w-16 h-16 rounded-full bg-white/10 border border-white/20 flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform">
-                            <div className="w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-l-[16px] border-l-white ml-1" />
-                        </div>
-                        <p className="text-white/60 text-sm">Ver en YouTube</p>
-                    </div>
                     <iframe
                         className="w-full h-full"
                         src="https://www.youtube.com/embed/QkMZnw3gSIk?autoplay=0"

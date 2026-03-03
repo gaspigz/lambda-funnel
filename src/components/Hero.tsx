@@ -36,7 +36,7 @@ export const Hero = () => {
                         Para que el negocio funcione <strong className="text-white/80">sin depender de vos.</strong>
                     </p>
 
-                    <ul className="space-y-3 mb-10 max-w-[480px]">
+                    <ul className="space-y-3  mb-10 max-w-[480px]">
                         {[
                             'Menos cancelaciones. Menos mensajes perdidos.',
                             'Más control diario. Menos dependencia de vos.',
